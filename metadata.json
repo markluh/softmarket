@@ -1,0 +1,5 @@
+{
+  "name": "SoftMarket",
+  "description": "A modern web application for buying and selling software, featuring AI-powered description generation for sellers.",
+  "requestFramePermissions": []
+}
