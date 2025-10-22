@@ -1,14 +1,6 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Ensure the API key is available in the environment variables
-const apiKey = process.env.API_KEY;
-if (!apiKey) {
-  throw new Error("API_KEY environment variable not set.");
-}
-
-const ai = new GoogleGenAI({ apiKey });
-
 /**
  * Generates a marketing description for a piece of software using the Gemini API.
  * @param softwareName The name of the software.
@@ -16,6 +8,13 @@ const ai = new GoogleGenAI({ apiKey });
  * @returns A promise that resolves to the generated description string.
  */
 export const generateDescription = async (softwareName: string, keywords: string): Promise<string> => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    console.error("API_KEY environment variable not set.");
+    throw new Error("API_KEY environment variable not set. Please configure it to use the AI feature.");
+  }
+  const ai = new GoogleGenAI({ apiKey });
+
   const prompt = `
     Generate a compelling, short marketing description for a software product.
     The description should be engaging, around 25-30 words, and highlight the key features.
